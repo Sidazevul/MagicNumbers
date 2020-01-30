@@ -12,31 +12,43 @@ public class MagicNumbers : MonoBehaviour
     void Start()
     {
         Debug.Log("Добро пожаловать в Magic Numbers");
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        minNumbers = 1;
+        maxNumbers = 1000;
         Debug.Log("Загадайте ваше число");
         Debug.Log("Минимальное число: " + minNumbers);
         Debug.Log("Максмальное число: " + maxNumbers);
-        result = minNumbers * maxNumbers / 2;
+        UpdateResult();
+    }
+
+    private void UpdateResult()
+    {
+        result = (minNumbers + maxNumbers) / 2;
         Debug.Log("Твое число: " + result + " ?");
     }
 
-    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && result < 1000)
         {
-            result = result + 250;
-            Debug.Log("Может твое число: " + result + " ?");
+            minNumbers = result;
+            UpdateResult();
         }
 
         else if (Input.GetKeyDown(KeyCode.DownArrow)  && result > 1)
         {
-            result = result - 250;
-            Debug.Log("Может твое число: " + result + " ?");
+            maxNumbers = result;
+            UpdateResult();
         }
 
         else if (Input.GetKeyDown(KeyCode.Return) || (Input.GetKeyDown(KeyCode.KeypadEnter)))
         {
             Debug.Log("Изи, твое число: " + result);
+            StartGame();
         }
         
         
