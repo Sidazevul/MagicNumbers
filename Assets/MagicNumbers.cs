@@ -18,6 +18,7 @@ public class MagicNumbers : MonoBehaviour
     //Start
     private void StartGame()
     {
+        courses = 0;
         minNumbers = 1;
         maxNumbers = 1000;
         Debug.Log("Загадайте ваше число");
