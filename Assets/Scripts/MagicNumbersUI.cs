@@ -9,11 +9,12 @@ public class MagicNumbersUI : MonoBehaviour
     public int maxNumbers = 1001;
     public Text Counter;
     public Text Courses;
-    int result;
+    public int result;
     int CoursesNumb = 0;
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         GenerateNumber();
     }
 
@@ -40,5 +41,10 @@ public class MagicNumbersUI : MonoBehaviour
     {
         result = Random.Range(minNumbers, maxNumbers + 1);
         Counter.text = $"Your number \n {result}";
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
